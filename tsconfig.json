@@ -1,21 +1,35 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "jsx": "react",
-    "sourceMap": true,
-    "noImplicitAny": false,
-    "module": "commonjs",
-    "experimentalDecorators": true,
-    "target": "es5",
-    "jsx": "react",
-    "lib": [
-      "dom",
-      "es6",
-      "dom.iterable",
-      "scripthost"
-    ]
-  },
-  "include": [
-    "./src/**/*"
-  ]
+      "target": "es6",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "sourceMap": true,
+      "removeComments": false,
+      "rootDirs": ["./app"],
+      "baseUrl": "./app",
+      "paths": {
+          "@components/*": ["components/*"],
+          "@views/*": ["views/*"]
+      },
+      "jsx": "react",
+      "alwaysStrict": true,
+      "allowJs": true,
+      "noUnusedLocals": true,
+      "importHelpers": true,
+      "experimentalDecorators": true,
+      "lib": [
+        "esnext",
+        "es7",
+        "es6",
+        "es5",
+        "es2015.promise",
+        "es2015.generator",
+        "dom"
+      ],
+      "skipLibCheck": true,
+      "typeRoots": [
+        "node_modules/@types"
+      ]
+  }
 }

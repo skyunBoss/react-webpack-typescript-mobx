@@ -2,7 +2,7 @@
  * @Author: xuchao 
  * @Date: 2018-07-06 11:30:47 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-16 15:10:04
+ * @Last Modified time: 2018-07-16 17:06:35
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -15,14 +15,17 @@ const SRC_PATH = path.resolve(ROOT_PATH, 'app');
 const BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
 
 const resolve = dir => {
-    return path.join(__dirname, '..', dir)
+    return path.join(__dirname, '..', dir);
 }
 
 module.exports = {
     mode: 'development',
-    devtool: 'source-map',
+    devtool: '#cheap-module-source-map',
     entry: {
-        app: ['babel-polyfill', path.resolve(SRC_PATH, 'index.tsx')]
+        app: [
+            'react-hot-loader/patch', 
+            path.resolve(SRC_PATH, 'index.tsx')
+        ]
     },
     output: {
         path: BUILD_PATH,
@@ -31,32 +34,22 @@ module.exports = {
     resolve: {
         extensions: ['.ts', ".json", '.tsx', ".scss"],
         modules: [
-            path.resolve(SRC_PATH), 
-            path.resolve(SRC_PATH, 'node_modules')
+            resolve('app'), 
+            resolve('node_modules')
         ],
         alias: { //配置别名
             '@components': resolve('app/components'),
             '@views': resolve('app/views')
         }
     },
-    // devServer: {
-    //     publicPath: '/',
-    //     contentBase: BUILD_PATH,
-    //     host: 'localhost',
-    //     port: '8080',
-    //     hot: true,
-    //     noInfo: true,
-    //     quiet: false,
-    //     inline: true,
-    //     stats: "errors-only",
-    //     proxy: {}
-    // },
     module: {
         rules: [{
             test: /\.(ts(x?)|js(x?))$/,
-            exclude: path.resolve(SRC_PATH, 'node_modules'),
-            include: SRC_PATH,
-            use: ['babel-loader', {
+            exclude: /node_modules/,
+            include: resolve('app'),
+            use: [{
+                loader: 'react-hot-loader/webpack',
+              }, {
                 loader: 'ts-loader',
                 options: {
                     // IMPORTANT! use happyPackMode mode to speed-up compilation and reduce errors reported to webpack
