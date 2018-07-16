@@ -1,5 +1,7 @@
 import report from './report';
 
-export default {
+const store = {
     report
 }
+
+export default store;

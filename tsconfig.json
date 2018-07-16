@@ -1,26 +1,21 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "module": "esnext",
-    "target": "es5",
-    "experimentalDecorators": true,
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "allowJs": true,
     "jsx": "react",
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": false,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "target": "es5",
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "es6",
+      "dom.iterable",
+      "scripthost"
+    ]
   },
   "include": [
-    "app/**/*"
-  ],
-  "exclude": [
-      "node_modules",
-      "**/*.spec.ts"
+    "./src/**/*"
   ]
 }

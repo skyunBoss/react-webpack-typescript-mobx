@@ -2,14 +2,14 @@
  * @Author: xuchao 
  * @Date: 2018-07-09 14:41:04 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-13 10:00:00
+ * @Last Modified time: 2018-07-16 14:56:11
  */
+const path = require('path');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.config');
+const config = require('./webpack.config.dev');
 const HOST='0.0.0.0';
 const PORT=3000;
-config.entry.app.unshift(`webpack-dev-server/client?http://${HOST}:${PORT}/`);
 
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
@@ -32,5 +32,5 @@ new WebpackDevServer(webpack(config), {
     if (err) {
         console.log(err);
     } 
-    console.log(`start app ${HOST}:${PORT}`);
+    console.log(`start app http://${HOST}:${PORT}/`);
 });

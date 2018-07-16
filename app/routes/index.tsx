@@ -2,19 +2,25 @@
  * @Author: xuchao 
  * @Date: 2018-07-11 14:00:21 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-12 16:47:46
+ * @Last Modified time: 2018-07-16 14:02:48
  */
 import * as React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import Loadable from 'react-loadable';
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import App from '../App';
+import Loading from '../components/Loading';
 
-export class Routes extends React.Component{
-  render(){
-    return(
+const App = Loadable({
+  loader: () => import('../views/App'),
+  loading: Loading
+})
+
+const Routes = () => {
+  <Router>
       <Switch>
-        <Route path="/" exact component={App}/>
+          <Route exact path="/" component={App} />
       </Switch>
-    )
-  }
+  </Router>
 }
+
+export default Routes;
