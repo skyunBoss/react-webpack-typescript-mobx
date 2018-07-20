@@ -2,7 +2,7 @@
  * @Author: xuchao 
  * @Date: 2018-07-11 14:00:21 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-18 10:13:58
+ * @Last Modified time: 2018-07-20 16:23:59
  */
 import * as React from 'react'
 import Loadable from 'react-loadable'
@@ -39,12 +39,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 )
 
 const Routes = () => (
-    <Router>
+    <BrowserRouter>
         <Switch>
             <PrivateRoute exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
         </Switch>
-    </Router>
+    </BrowserRouter>
 )
 
 export default Routes

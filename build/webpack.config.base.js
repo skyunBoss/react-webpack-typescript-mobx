@@ -2,7 +2,7 @@
  * @Author: xuchao 
  * @Date: 2018-07-06 11:30:47 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-20 11:10:10
+ * @Last Modified time: 2018-07-20 16:47:49
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -37,7 +37,9 @@ module.exports = {
         ],
         alias: { //配置别名
             '@components': resolve('src/components'),
-            '@views': resolve('src/views')
+            '@views': resolve('src/views'),
+            '@stores': resolve('src/stores'),
+            '@routes': resolve('src/routes')
         }
     },
     module: {
@@ -60,8 +62,7 @@ module.exports = {
             use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({ // css-hot-loader结局热替换CSS不自动刷新
                 fallback: 'style-loader',
                 use: ['css-loader', 'sass-loader']
-            })),
-            name: 'css/[name].[hash:8].[ext]',
+            }))
         }, {
             test: /\.json$/,
             loader: 'json-loader'
@@ -70,14 +71,14 @@ module.exports = {
             loader: 'url-loader',
             query: {
                 limit: 10000,
-                name: 'images/[name].[hash:8].[ext]',
+                name: 'images/[name].[hash:8].[ext]'
             }
         }, {
             test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
             loader: 'url-loader',
             query: {
                 limit: 10000,
-                name: 'fonts/[name].[hash:8].[ext]',
+                name: 'fonts/[name].[hash:8].[ext]'
             }
         }]
     },

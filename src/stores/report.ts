@@ -1,10 +1,8 @@
-//import { observable, computed, action } from 'mobx';
+import { observable, computed, action } from 'mobx';
 
 
 class ReportStore{
-
+    @observable showType: number = -1
 }
 
-const report = new ReportStore();
-
-export default report;
+export default new ReportStore();

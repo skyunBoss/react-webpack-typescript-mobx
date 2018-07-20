@@ -10,7 +10,9 @@
       "baseUrl": "./src",
       "paths": {
           "@components/*": ["components/*"],
-          "@views/*": ["views/*"]
+          "@views/*": ["views/*"],
+          "@stores/*": ["stores/*"],
+          "@routes/*": ["routes/*"]
       },
       "jsx": "react",
       "alwaysStrict": true,

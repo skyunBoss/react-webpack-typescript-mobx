@@ -2,7 +2,7 @@
  * @Author: xuchao 
  * @Date: 2018-07-09 14:41:04 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-20 10:38:21
+ * @Last Modified time: 2018-07-20 14:38:35
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -16,7 +16,7 @@ new WebpackDevServer(webpack(config), {
     publicPath: '/',
     historyApiFallback: true, 
     hot: true,
-    inline:true,
+    inline: true,
     open: true,
     stats: "errors-only",
     proxy: {
