@@ -2,22 +2,22 @@
  * @Author: xuchao 
  * @Date: 2018-07-09 14:41:04 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-16 15:29:25
+ * @Last Modified time: 2018-07-20 10:38:21
  */
 const path = require('path');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
+
 const config = require('./webpack.config.dev');
-const HOST='0.0.0.0';
-const PORT=3000;
+const HOST = 'localhost';
+const PORT = 8080;
 
 new WebpackDevServer(webpack(config), {
-    publicPath: config.output.publicPath,
+    publicPath: '/',
     historyApiFallback: true, 
     hot: true,
     inline:true,
-    noInfo: false,
-    overlay: true,
+    open: true,
     stats: "errors-only",
     proxy: {
         // '/api': {

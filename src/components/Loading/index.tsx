@@ -2,8 +2,9 @@
  * @Author: xuchao 
  * @Date: 2018-07-16 11:24:34 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-16 11:24:55
+ * @Last Modified time: 2018-07-17 13:58:02
  */
+import * as React from 'react';
 
 const Loading = ({ isLoading, error }) => {
     // Handle the loading state

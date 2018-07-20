@@ -6,8 +6,8 @@
       "allowSyntheticDefaultImports": true,
       "sourceMap": true,
       "removeComments": false,
-      "rootDirs": ["./app"],
-      "baseUrl": "./app",
+      "rootDirs": ["./src"],
+      "baseUrl": "./src",
       "paths": {
           "@components/*": ["components/*"],
           "@views/*": ["views/*"]
