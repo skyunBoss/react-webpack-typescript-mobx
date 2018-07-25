@@ -2,7 +2,7 @@
  * @Author: xuchao 
  * @Date: 2018-07-11 14:00:14 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-25 11:31:05
+ * @Last Modified time: 2018-07-25 11:37:22
  */
 import * as React from 'react';
 import { Link } from 'react-router-dom';
@@ -24,9 +24,6 @@ export default class App extends React.Component<Props, {}> {
             <Layout>
                 <Header>
                     <div className="logo" />
-                    <ul>
-                        <li>Nav 1</li>
-                    </ul>
                 </Header>
                 <Content>
                     <Link to="/login"></Link>
