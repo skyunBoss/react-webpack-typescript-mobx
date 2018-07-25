@@ -9,29 +9,19 @@
       "rootDirs": ["./src"],
       "baseUrl": "./src",
       "paths": {
-          "@components/*": ["components/*"],
-          "@views/*": ["views/*"],
-          "@stores/*": ["stores/*"],
-          "@routes/*": ["routes/*"]
+          "@assets/*": ["assets/*", "assets"],
+          "@components/*": ["components/*", "components"],
+          "@views/*": ["views/*", "views"],
+          "@stores/*": ["stores/*", "stores"],
+          "@routes/*": ["routes/*", "routes"]
       },
       "jsx": "react",
       "alwaysStrict": true,
-      "allowJs": true,
       "noUnusedLocals": true,
       "importHelpers": true,
       "experimentalDecorators": true,
-      "lib": [
-        "esnext",
-        "es7",
-        "es6",
-        "es5",
-        "es2015.promise",
-        "es2015.generator",
-        "dom"
-      ],
+      "lib": ["es7", "dom"],
       "skipLibCheck": true,
-      "typeRoots": [
-        "node_modules/@types"
-      ]
+      "typeRoots": ["node", "node_modules/@types", "./typings"]
   }
 }

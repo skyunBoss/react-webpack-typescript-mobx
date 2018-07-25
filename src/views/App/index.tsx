@@ -2,28 +2,37 @@
  * @Author: xuchao 
  * @Date: 2018-07-11 14:00:14 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-20 17:07:49
+ * @Last Modified time: 2018-07-25 11:31:05
  */
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import { observer, inject } from 'mobx-react'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
-import * as store from '@stores'
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { observer, inject } from 'mobx-react';
+import Report from '@stores/report';
+import { Layout } from 'antd';
 
-interface ReportProps extends RouteComponentProps<{}>{
-    store: store.report
-} 
+const { Header, Content, Footer } = Layout;
 
-@inject('store')
+interface Props{
+    report?: Report
+}
+
+@inject('Report')
 @observer
-export default class App extends React.Component<ReportProps, {}> {
-    render() {
-        console.log(this.props.store)
+export default class App extends React.Component<Props, {}> {
+    public render(): JSX.Element {
         return (
-            <div>
-                <Link to="/login">Login</Link>
-                App
-            </div>
+            <Layout>
+                <Header>
+                    <div className="logo" />
+                    <ul>
+                        <li>Nav 1</li>
+                    </ul>
+                </Header>
+                <Content>
+                    <Link to="/login"></Link>
+                </Content>
+                <Footer>Footer</Footer>
+            </Layout>
         )
     }
 }

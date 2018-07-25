@@ -2,7 +2,7 @@
  * @Author: xuchao 
  * @Date: 2018-07-06 11:30:47 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-20 16:47:49
+ * @Last Modified time: 2018-07-25 10:15:19
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -22,7 +22,7 @@ const resolve = dir => {
 module.exports = {
     devtool: process.env.NODE_ENV === 'development' ? 'source-map' : false,
     entry: {
-        index: path.resolve(SRC_PATH, 'index.tsx')
+        app: path.resolve(SRC_PATH, 'index.tsx')
     },
     output: {
         path: BUILD_PATH,
@@ -39,7 +39,8 @@ module.exports = {
             '@components': resolve('src/components'),
             '@views': resolve('src/views'),
             '@stores': resolve('src/stores'),
-            '@routes': resolve('src/routes')
+            '@routes': resolve('src/routes'),
+            '@assets': resolve('src/assets')
         }
     },
     module: {
@@ -58,10 +59,10 @@ module.exports = {
                 })
             }
         }, {
-            test: /\.(scss|css)$/,
+            test: /\.(less|css)$/,
             use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({ // css-hot-loader结局热替换CSS不自动刷新
                 fallback: 'style-loader',
-                use: ['css-loader', 'sass-loader']
+                use: ['css-loader', 'less-loader']
             }))
         }, {
             test: /\.json$/,
