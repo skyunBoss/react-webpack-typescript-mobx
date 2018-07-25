@@ -1,5 +1,1 @@
-import Report from './report';
-
-export default {
-    Report
-};
+export { default as Report } from './report';
