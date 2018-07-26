@@ -2,13 +2,11 @@
  * @Author: xuchao 
  * @Date: 2018-07-06 11:30:47 
  * @Last Modified by: xuchao
- * @Last Modified time: 2018-07-25 10:15:19
+ * @Last Modified time: 2018-07-26 16:02:52
  */
 const path = require('path');
 const webpack = require('webpack');
-const HtmlwebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 const tsImportPlugin = require('ts-import-plugin');
 
 const ROOT_PATH = path.resolve(__dirname, '..');
@@ -45,7 +43,7 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /\.(ts|tsx|js|jsx)$/,
+            test: /\.(ts|tsx)$/,
             exclude: /node_modules/,
             loader: 'ts-loader',
             options: {
@@ -56,14 +54,44 @@ module.exports = {
                         style: true,
                         libraryDirectory: 'lib'
                     })]
-                })
+                }),
+                compilerOptions: {
+                    module: 'es2015'
+                }
             }
         }, {
             test: /\.(less|css)$/,
-            use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({ // css-hot-loader结局热替换CSS不自动刷新
-                fallback: 'style-loader',
-                use: ['css-loader', 'less-loader']
-            }))
+            use: [
+                require.resolve('style-loader'),
+                {
+                    loader: require.resolve('css-loader')
+                },
+                {
+                    loader: require.resolve('postcss-loader'),
+                    options: {
+                        ident: 'postcss',
+                        plugins: () => [
+                            require('postcss-flexbugs-fixes'),
+                            autoprefixer({
+                                browsers: [
+                                    '>1%',
+                                    'last 4 versions',
+                                    'Firefox ESR',
+                                    'not ie < 9', // React doesn't support IE8 anyway
+                                ],
+                                flexbox: 'no-2009',
+                            }),
+                        ],
+                    },
+                },
+                {
+                    loader: require.resolve('less-loader'),
+                    options: {
+                        sourceMap: true,
+                        javascriptEnabled: true
+                    },
+                },
+            ]
         }, {
             test: /\.json$/,
             loader: 'json-loader'
